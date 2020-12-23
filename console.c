@@ -32,6 +32,12 @@ int main() {
     int in_pipe = open("wario",O_RDONLY);
     catch_error(out_pipe);
 
+    //remove pipes after connection made
+    sucssess = remove("wario");
+    catch_error(sucssess);
+    sucssess = remove("waluigi");
+    catch_error(sucssess);
+
     //pipe open, write stuff
     while(fgets(out_buff, sizeof(out_buff), stdin)) {
         sucssess = write(out_pipe,out_buff,sizeof(out_buff));
